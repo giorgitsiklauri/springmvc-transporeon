@@ -8,33 +8,13 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/profile") //class-level base mapping
-
-
-// www.yourpage.com/person/path-variable
 public class PersonController {
 
     private List<Person> personList = new ArrayList<>();
-
-
-    //improved below
-/*    @RequestMapping(value = "/profile", method = RequestMethod.POST)
-    public String getProfilePage(@RequestParam("firstname") String name,
-                                 @RequestParam("lastname") String surname,
-                                 @RequestParam("position") String pos,
-                                 @RequestParam("age") Integer age,
-                                 Model model) {
-
-        personList.add(new Person(name, surname, age, pos));
-
-
-        model.addAttribute("p", personList);
-
-        return "profile";
-
-    }*/
 
 
     //let's improve getProfilePage
@@ -46,8 +26,23 @@ public class PersonController {
     }
 
     @RequestMapping("/show")
-    public String getProfilePage(HttpServletRequest request, Model model) {
+    public String getProfilePage(Model model) {
         model.addAttribute("p", personList);
+        return "profile";
+    }
+
+
+    //This method maps to host/profile/{age}
+    @GetMapping("{age}")
+    public String getProfilesLessThanAge(@PathVariable("age") int age, Model model) {
+        List<Person> plist = personList
+                .stream()
+                .filter(p -> p.getAge() < age)
+                .collect(Collectors.toList());
+
+        //there can be much more logic..
+
+        model.addAttribute("p", plist);
         return "profile";
     }
 

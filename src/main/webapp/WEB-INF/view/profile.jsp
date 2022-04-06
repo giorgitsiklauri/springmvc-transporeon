@@ -30,7 +30,7 @@
                 </c:forEach>
             </table>
 
-        <p align="center"><a href="welcome">Go back</a></p>
+        <p align="center"><a href="/welcome">Go back</a></p>
 
 
 
