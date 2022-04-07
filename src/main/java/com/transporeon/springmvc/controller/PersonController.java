@@ -1,6 +1,7 @@
 package com.transporeon.springmvc.controller;
 
 import com.transporeon.springmvc.model.Person;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,21 +19,21 @@ public class PersonController {
 
 
     //let's improve getProfilePage
-    @PostMapping("/create")
+    @PostMapping("/create") //localhost:8080/profile/create
     public String getProfilePage2(Person person, Model m) {
         personList.add(person);
         m.addAttribute("p", personList);
         return "profile";
     }
 
-    @RequestMapping("/show")
+    @RequestMapping("/show") //localhost:8080/profile/show
     public String getProfilePage(Model model) {
         model.addAttribute("p", personList);
         return "profile";
     }
 
 
-    //This method maps to host/profile/{age}
+    //This method maps to host/profile/{any-integer}
     @GetMapping("{age}")
     public String getProfilesLessThanAge(@PathVariable("age") int age, Model model) {
         List<Person> plist = personList

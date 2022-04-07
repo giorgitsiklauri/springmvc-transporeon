@@ -6,28 +6,18 @@
          version="4.0">
 
     <servlet>
-        <!--Dispatcher Servlet is the heart (almost 90%) of Spring MVC Framework-->
-        <!--by default, Dispatcher Servlet will look for servletname-servlet.xml file for Application Context configuration-->
-        <servlet-name>dispatcher</servlet-name>
+        <servlet-name>ds</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-
-
-        <!--optional part, if you want to override default name for spring context configuration XML file-->
-        <!--
         <init-param>
-            <param-name>contextConfiguration</param-name>
+            <param-name>contextConfigLocation</param-name>
             <param-value>/WEB-INF/springcontext.xml</param-value>
         </init-param>
-        -->
-
         <load-on-startup>1</load-on-startup>
-
-
     </servlet>
-    
+
     <servlet-mapping>
-        <servlet-name>dispatcher</servlet-name>
-        <url-pattern>/</url-pattern> <!--localhost:8080/transporeon/**-->
+        <servlet-name>ds</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
 </web-app>

@@ -35,7 +35,7 @@
                 </form>
                 </p>
 
-
+    ${footer}
     </body>
 
 </html>

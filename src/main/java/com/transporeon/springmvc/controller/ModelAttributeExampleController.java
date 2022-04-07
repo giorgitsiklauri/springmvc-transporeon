@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/ma-example") //ma stands for model attribute
 public class ModelAttributeExampleController {
 
-
     @GetMapping("")
     public String getWelcomePage() {
         return "welcome";
@@ -52,11 +51,9 @@ public class ModelAttributeExampleController {
         return "third";
     }
 
-
     @ModelAttribute("footer")
     public String sharedData() {
         return "This is the footer of page. Copyright 2022";
     }
-
 
 }
